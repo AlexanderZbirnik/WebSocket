@@ -1,0 +1,15 @@
+PODS:
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+  - SocketRocket (0.5.1)
+
+DEPENDENCIES:
+  - MagicalRecord
+  - SocketRocket
+
+SPEC CHECKSUMS:
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+
+COCOAPODS: 0.39.0
