@@ -1,3 +1,4 @@
 # WebSocket
 WebSoket test work.
-Language: Objective-c&
+Language: Objective-c.
+Target OS: iOS 8+
