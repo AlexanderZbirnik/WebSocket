@@ -10,9 +10,13 @@
 #import "SendAndLogController.h"
 
 #import "WebSocket.h"
+
 #import "DataConverter.h"
 #import "NSDate+Additions.h"
+
 #import "CoreDataManager.h"
+#import "Message+CoreDataClass.h"
+#import "Message+CoreDataProperties.h"
 
 @interface MainViewController () < SendAndLogControllerDelegate >
 
@@ -65,6 +69,31 @@
                                              selector:@selector(saveMessageNotification:)
                                                  name:CoreDataManagerSaveMessageNotification
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(connectionStateNotification:)
+                                                 name:WebSocketConnectionStateNotification
+                                               object:nil];
+}
+
+- (void) connectionStateNotification: (NSNotification *) notification {
+    
+    NSString *title = [notification.userInfo objectForKey:WebSocketTitleUserInfoKey];
+    
+    if ([title isEqualToString:WebSocketTitleConnected]) {
+        
+        NSArray *messages = [CoreDataManager findNotSendedMessages];
+        
+        if (messages.count > 0) {
+            
+            for (Message *message in messages) {
+                
+                [self sendMessage:message.text
+                            onOff:@(message.onOff)
+                          andDate:message.date];
+            }
+        }
+    }
 }
 
 - (void) saveMessageNotification: (NSNotification *) notification {
@@ -73,18 +102,25 @@
     NSNumber *onOff = [notification.userInfo objectForKey:CoreDataManagerOnOffUserInfoKey];
     NSString *date = [notification.userInfo objectForKey:CoreDataManagerDateUserInfoKey];
     
+    [self sendMessage:message
+                onOff:onOff
+              andDate:date];
+}
+
+- (void) sendMessage: (NSString *) message onOff: (NSNumber *) onOff andDate: (NSString *) date {
+    
     NSDictionary *dict = @{DataConverterMessageKey: message,
                            DataConverterOnOffKey: onOff,
                            DataConverterDateKey: date};
-
+    
     id messageObject = [DataConverter objectWithDataFormat:self.dataFormat andDictionary:dict];
-
+    
     [self.webSocket sendMessage:messageObject];
 }
 
 - (void)dealloc {
     
-    [_webSocket retain];
+    [_webSocket release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super dealloc];

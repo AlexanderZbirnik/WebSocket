@@ -11,7 +11,7 @@
 @implementation Message (CoreDataProperties)
 
 + (NSFetchRequest<Message *> *)fetchRequest {
-	return [[NSFetchRequest alloc] initWithEntityName:@"Message"];
+	return [[[NSFetchRequest alloc] initWithEntityName:@"Message"] autorelease];
 }
 
 @dynamic date;

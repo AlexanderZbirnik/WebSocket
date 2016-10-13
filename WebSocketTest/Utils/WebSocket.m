@@ -19,7 +19,12 @@ NSString * const WebSocketDescriptionUserInfoKey         = @"WebSocketDescriptio
 NSString * const WebSocketMessageObjectUserInfoKey       = @"WebSocketMessageObjectUserInfoKey";
 NSString * const WebSocketDateUserInfoKey                = @"WebSocketDateUserInfoKey";
 
-
+NSString * const WebSocketTitleOpenConnection            = @"Open connection...";
+NSString * const WebSocketTitleConnected                 = @"Connected";
+NSString * const WebSocketTitleSendMessage               = @"Send message";
+NSString * const WebSocketTitleDisconnected              = @"Disconnected";
+NSString * const WebSocketTitleCloseConnection           = @"Close connection";
+NSString * const WebSocketTitleReceivedMessage           = @"Received message";
 
 @interface WebSocket() <SRWebSocketDelegate>
 {
@@ -78,7 +83,7 @@ NSString * const WebSocketDateUserInfoKey                = @"WebSocketDateUserIn
     _webSocket = [[SRWebSocket alloc] initWithURL:self.URL];
     _webSocket.delegate = self;
     
-    NSString *title = @"Open connection...";
+    NSString *title = WebSocketTitleOpenConnection;
     NSString *description = [NSString stringWithFormat:@"Openned connection to %@", self.URL.absoluteString];
     NSString *date = [[NSDate date] formattedDateString];
 
@@ -89,7 +94,7 @@ NSString * const WebSocketDateUserInfoKey                = @"WebSocketDateUserIn
 
 - (void) closeConnection {
     
-    NSString *title = @"Close connection";
+    NSString *title = WebSocketTitleCloseConnection;
     NSString *description = [NSString stringWithFormat:@"User close connection to %@", self.URL.absoluteString];
     NSString *date = [[NSDate date] formattedDateString];
     
@@ -102,21 +107,23 @@ NSString * const WebSocketDateUserInfoKey                = @"WebSocketDateUserIn
 
 - (void) sendMessage: (id) messageObject {
     
-    NSString *title = @"Send message";
+    NSString *title = WebSocketTitleSendMessage;
     NSString *description = @"Send";
     NSString *date = [[NSDate date] formattedDateString];
     
     [self postNotification:WebSocketSendMessageNotification withTitle:title description:description date:date andMessageObject:messageObject];
     
-    [_webSocket send:messageObject];
-    
+    if (_webSocket.readyState == SR_OPEN) {
+        
+        [_webSocket send:messageObject];
+    } 
 }
 
 #pragma mark - SRWebSocketDelegate
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
     
-    NSString *title = @"Connected";
+    NSString *title = WebSocketTitleConnected;
     NSString *description = [NSString stringWithFormat:@"Connected to %@", self.URL.absoluteString];
     NSString *date = [[NSDate date] formattedDateString];
     
@@ -125,7 +132,7 @@ NSString * const WebSocketDateUserInfoKey                = @"WebSocketDateUserIn
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
         
-    NSString *title = @"Disconnected";
+    NSString *title = WebSocketTitleDisconnected;
     NSString *description =
     [NSString stringWithFormat:@"Connection failed to %@. Error: %@", self.URL.absoluteString, [error localizedDescription]];
     NSString *date = [[NSDate date] formattedDateString];
@@ -140,7 +147,7 @@ NSString * const WebSocketDateUserInfoKey                = @"WebSocketDateUserIn
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     
-    NSString *title = @"Connection closed";
+    NSString *title = WebSocketTitleCloseConnection;
     NSString *description =
     [NSString stringWithFormat:@"Connection to %@ closed. %@", self.URL.absoluteString, reason];
     NSString *date = [[NSDate date] formattedDateString];
@@ -152,7 +159,7 @@ NSString * const WebSocketDateUserInfoKey                = @"WebSocketDateUserIn
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
         
-    NSString *title = @"Received message";
+    NSString *title = WebSocketTitleReceivedMessage;
     NSString *description = @"Received";
     NSString *date = [[NSDate date] formattedDateString];
     

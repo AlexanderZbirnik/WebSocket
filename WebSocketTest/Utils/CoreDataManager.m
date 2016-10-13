@@ -47,9 +47,19 @@ NSString * const CoreDataManagerDateUserInfoKey             = @"CoreDataManagerD
     }];
 }
 
+#pragma mark - find messages methods
+
 + (NSArray *) findAllMessages {
     
      return [Message MR_findAllSortedBy:@"date" ascending:NO];
+}
+
++ (NSArray *) findNotSendedMessages {
+    
+    NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:@"isSended == %@", @(0)];
+
+    return [Message MR_findAllSortedBy:@"date" ascending:YES withPredicate:predicate];
 }
 
 + (void) findMessageWithText: (NSString *) text onOff: (BOOL) onOff date: (NSString *) date andChangeIsSendedOn: (BOOL) isSended {
@@ -71,9 +81,7 @@ NSString * const CoreDataManagerDateUserInfoKey             = @"CoreDataManagerD
                                                                 object:nil
                                                               userInfo:nil];
         }
-        
     }];
-        
 }
 
 @end

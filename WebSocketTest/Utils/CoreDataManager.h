@@ -24,6 +24,7 @@ extern NSString * const CoreDataManagerDateUserInfoKey;
 + (void) saveMessage: (NSString *) text andOnOff: (BOOL) onOff;
 
 + (NSArray *) findAllMessages;
++ (NSArray *) findNotSendedMessages;
 + (void) findMessageWithText: (NSString *) text onOff: (BOOL) onOff date: (NSString *) date andChangeIsSendedOn: (BOOL) isSended;
 
 @end

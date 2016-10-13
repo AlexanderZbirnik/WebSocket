@@ -17,6 +17,13 @@ extern NSString * const WebSocketDescriptionUserInfoKey;
 extern NSString * const WebSocketMessageObjectUserInfoKey;
 extern NSString * const WebSocketDateUserInfoKey;
 
+extern NSString * const WebSocketTitleOpenConnection;
+extern NSString * const WebSocketTitleConnected;
+extern NSString * const WebSocketTitleSendMessage;
+extern NSString * const WebSocketTitleDisconnected;
+extern NSString * const WebSocketTitleCloseConnection;
+extern NSString * const WebSocketTitleReceivedMessage;
+
 @interface WebSocket : NSObject
 
 - (instancetype)initWithURL: (NSURL *) URL;

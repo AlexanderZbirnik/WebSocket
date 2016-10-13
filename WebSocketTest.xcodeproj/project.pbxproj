@@ -13,8 +13,8 @@
 		C71491081DA90CBC0050DDD5 /* ReceivedController.m in Sources */ = {isa = PBXBuildFile; fileRef = C71491031DA90CBC0050DDD5 /* ReceivedController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C71491091DA90CBC0050DDD5 /* SendAndLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = C71491051DA90CBC0050DDD5 /* SendAndLogController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C71890971DA9401A00A2E0A0 /* ReceivedMessage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C71890961DA9401A00A2E0A0 /* ReceivedMessage+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C765D2EB1DA90DB10008C946 /* Message+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2E61DA90DB10008C946 /* Message+CoreDataClass.m */; };
-		C765D2EC1DA90DB10008C946 /* Message+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2E81DA90DB10008C946 /* Message+CoreDataProperties.m */; };
+		C765D2EB1DA90DB10008C946 /* Message+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2E61DA90DB10008C946 /* Message+CoreDataClass.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C765D2EC1DA90DB10008C946 /* Message+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2E81DA90DB10008C946 /* Message+CoreDataProperties.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C765D2ED1DA90DB10008C946 /* ReceivedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2EA1DA90DB10008C946 /* ReceivedMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C765D2F01DA90DE70008C946 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2EF1DA90DE70008C946 /* NSDate+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C765D2F51DA90E1F0008C946 /* ReceivedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2F21DA90E1F0008C946 /* ReceivedCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -23,9 +23,9 @@
 		C765D2FF1DA90E650008C946 /* DataConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2FB1DA90E650008C946 /* DataConverter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C765D3001DA90E650008C946 /* WebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = C765D2FD1DA90E650008C946 /* WebSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C7D1E7FD1DA3C40B00B7F5FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D1E7FC1DA3C40B00B7F5FC /* main.m */; };
-		C7D1E8001DA3C40B00B7F5FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D1E7FF1DA3C40B00B7F5FC /* AppDelegate.m */; };
+		C7D1E8001DA3C40B00B7F5FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D1E7FF1DA3C40B00B7F5FC /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C7D1E8061DA3C40C00B7F5FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D1E8041DA3C40C00B7F5FC /* Main.storyboard */; };
-		C7D1E8091DA3C40C00B7F5FC /* WebSocketTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7D1E8071DA3C40C00B7F5FC /* WebSocketTest.xcdatamodeld */; };
+		C7D1E8091DA3C40C00B7F5FC /* WebSocketTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7D1E8071DA3C40C00B7F5FC /* WebSocketTest.xcdatamodeld */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C7D1E80B1DA3C40C00B7F5FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7D1E80A1DA3C40C00B7F5FC /* Assets.xcassets */; };
 		C7D1E80E1DA3C40C00B7F5FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D1E80C1DA3C40C00B7F5FC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -245,6 +245,7 @@
 				TargetAttributes = {
 					C7D1E7F71DA3C40B00B7F5FC = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = LRU632Y282;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -472,7 +473,7 @@
 			baseConfigurationReference = A44CD62EAFA87E3E07FF727E /* Pods-WebSocketTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = LRU632Y282;
 				INFOPLIST_FILE = WebSocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -486,7 +487,7 @@
 			baseConfigurationReference = 93758033B57C88A7F1AB49D3 /* Pods-WebSocketTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = LRU632Y282;
 				INFOPLIST_FILE = WebSocketTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
